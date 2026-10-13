@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite Joaquim Wesley - 2 Anos</title>
+  <style>
+    /* Reset e Configurações Gerais */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    }
+    
+    body, html {
+      width: 100%;
+      height: 100%;
+      background-color: #e0f4ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Container do Convite Móvel */
+    .convite-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 100vh;
+      max-height: 900px;
+      /* INSIRA O NOME DO SEU ARQUIVO DE IMAGEM AQUI */
+      background-image: url('joaquim.png'); 
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* Botão de Música Flutuante */
+    .btn-musica {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 48px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 3px solid #0056b3;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      transition: transform 0.2s;
+    }
+    .btn-musica:active {
+      transform: scale(0.9);
+    }
+
+    /* Área dos Três Botões (Posicionada na parte destacada em vermelho) */
+    .botoes-container {
+      position: absolute;
+      top: 35%; /* Ajusta a altura exata para ficar entre a frase e o arco-íris */
+      left: 5%;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      z-index: 10;
+    }
+
+    /* Estilo Base dos Botões */
+    .btn-interativo {
+      flex: 1;
+      height: 65px;
+      border-radius: 16px;
+      border: none;
+      font-weight: bold;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      box-shadow: 0 5px 0px rgba(0,0,0,0.2), 0 8px 12px rgba(0,0,0,0.25);
+      transition: transform 0.1s, box-shadow 0.1s;
+      text-decoration: none;
+      text-align: center;
+      line-height: 1.1;
+      padding: 4px;
+    }
+
+    .btn-interativo span {
+      font-size: 18px;
+    }
+
+    .btn-interativo:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0px rgba(0,0,0,0.2), 0 3px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Cores dos Botões ajustadas ao tema */
+    .btn-presentes {
+      background: linear-gradient(135deg, #ffd800, #ff9d00);
+      border: 3px solid #b35900;
+      color: #4a2100;
+    }
+
+    .btn-localizacao {
+      background: linear-gradient(135deg, #0d51b3, #07286a);
+      border: 3px solid #ffd800;
+      color: #ffffff;
+    }
+
+    .btn-confirmar {
+      background: linear-gradient(135deg, #a7f5a9, #4cd34e);
+      border: 3px solid #145916;
+      color: #052b06;
+    }
+
+    /* Modais (Janelas que abrem ao clicar) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background-color: white;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 24px;
+      border: 5px solid #ff9d00;
+      padding: 25px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: aparecer 0.3s ease-out;
+    }
+
+    @keyframes aparecer {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .fechar-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #ff4a5a;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal-content h3 {
+      font-size: 22px;
+      color: #0056b3;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .btn-modal-acao {
+      display: inline-block;
+      background-color: #ff9d00;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .btn-modal-acao:hover {
+      background-color: #e08a00;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tag do Áudio de Fundo -->
+  <audio id="musica-fundo" loop preload="auto">
+    <source src="Rei Davi - 3Palavrinhas.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <div class="convite-container">
+    
+    <!-- Botão de controle de música -->
+    <button class="btn-musica" id="btn-musica" onclick="alternarMusica()">🔊</button>
+
+    <!-- Três Botões posicionados na área marcada em vermelho -->
+    <div class="botoes-container">
+      <button class="btn-interativo btn-presentes" onclick="abrirModal('modal-presentes')">
+        <span>🎁</span>LISTA DE PRESENTES
+      </button>
+
+      <button class="btn-interativo btn-localizacao" onclick="abrirModal('modal-localizacao')">
+        <span>📍</span>LOCALIZAÇÃO
+      </button>
+
+      <button class="btn-interativo btn-confirmar" onclick="abrirModal('modal-confirmar')">
+        <span>✅</span>CONFIRMAR PRESENÇA
+      </button>
+    </div>
+
+  </div>
+
+  <!-- MODAL: LISTA DE PRESENTES -->
+  <div id="modal-presentes" class="modal">
+    <div class="modal-content" style="border-color: #ffd800;">
+      <button class="fechar-modal" onclick="fecharModal('modal-presentes')">X</button>
+      <h3>🎁 Lista de Presentes</h3>
+      <p>Sua presença é o nosso maior presente! Caso deseje nos agraciar, seguem algumas sugestões:</p>
+      <p>💡 <b>Roupas:</b> Tamanho 2/3 anos <br>💡 <b>Calçados:</b> Nº 22/23</p>
+      <p>💡 <b>Brinquedos:</b> Didáticos e Educativos<br>💡 <b>Aproridados para idade 2 anos</p>
+      <!--<a href="lista.html" target="_blank" class="btn-modal-acao">Ver Lista Completa</a>-->
+    </div>
+  </div>
+
+  <!-- MODAL: LOCALIZAÇÃO -->
+  <div id="modal-localizacao" class="modal">
+    <div class="modal-content" style="border-color: #0b4596;">
+      <button class="fechar-modal" onclick="fecharModal('modal-localizacao')">X</button>
+      <h3>📍 Local do Aniversário</h3>
+      <p><b>Data:</b> Domingo, 01 de Novembro às 11:00h</p>
+      <p><b>Endereço:</b> Rua L 3, N 183 - Distrito Industrial I, Manaus/Am</p>
+      <a href="https://www.google.com/maps/dir//Espa%C3%A7o+Green+Garden,+R.+L+3,+183+-+Distrito+Industrial+I,+Manaus+-+AM,+69077-825,+Brasil/@41.1322828,-8.297896,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x926c1b5ce933e6b1:0xc2e64a73ff042b03!2m2!1d-59.9599369!2d-3.1008985?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-modal-acao">Abrir no Google Maps</a>
+    </div>
+  </div>
+
+  <!-- MODAL: CONFIRMAR PRESENÇA -->
+  <div id="modal-confirmar" class="modal">
+    <div class="modal-content" style="border-color: #4cd34e;">
+      <button class="fechar-modal" onclick="fecharModal('modal-confirmar')">X</button>
+      <h3>✅ Confirmar Presença</h3>
+      <p>Por favor, confirme sua presença até o dia 20/10 clicando no botão abaixo:</p>
+      <a href="https://wa.me/+5592994162043?text=Olá!%20Confirmo%20minha%20presença%20no%20aniversário%20do%20Joaquim!" target="_blank" class="btn-modal-acao" style="background-color: #25D366;">Confirmar via WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    // Lógica para tocar a música na primeira interação
+    const musica = document.getElementById('musica-fundo');
+    const btnMusica = document.getElementById('btn-musica');
+    let musicaIniciada = false;
+
+    function iniciarMusicaNaInteracao() {
+      if (!musicaIniciada) {
+        musica.play().then(() => {
+          musicaIniciada = true;
+          btnMusica.innerHTML = "🔊";
+          document.removeEventListener('click', iniciarMusicaNaInteracao);
+          document.removeEventListener('touchstart', iniciarMusicaNaInteracao);
+        }).catch(() => {
+          console.log("Aguardando clique para iniciar o áudio.");
+        });
+      }
+    }
+
+    document.addEventListener('click', iniciarMusicaNaInteracao);
+    document.addEventListener('touchstart', iniciarMusicaNaInteracao);
+
+    function alternarMusica() {
+      musicaIniciada = true;
+      if (musica.paused) {
+        musica.play();
+        btnMusica.innerHTML = "🔊";
+      } else {
+        musica.pause();
+        btnMusica.innerHTML = "🔇";
+      }
+    }
+
+    // Funções de Modal
+    function abrirModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+
+    function fecharModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
