@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
       padding: 0;
       font-family: 'Comic Sans MS', 'Arial', sans-serif;
     }
-    
-    body, html {
+
+    body,
+    html {
       width: 100%;
       height: 100%;
       background-color: #e0f4ff;
@@ -31,10 +33,10 @@
       height: 100vh;
       max-height: 900px;
       /* INSIRA O NOME DO SEU ARQUIVO DE IMAGEM AQUI */
-      background-image: url('joaquim.png'); 
+      background-image: url('joaquim.png');
       background-size: cover;
       background-position: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       border-radius: 12px;
       overflow: hidden;
     }
@@ -51,13 +53,14 @@
       border-radius: 50%;
       font-size: 22px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 100;
       transition: transform 0.2s;
     }
+
     .btn-musica:active {
       transform: scale(0.9);
     }
@@ -65,7 +68,8 @@
     /* Área dos Três Botões (Posicionada na parte destacada em vermelho) */
     .botoes-container {
       position: absolute;
-      top: 35%; /* Ajusta a altura exata para ficar entre a frase e o arco-íris */
+      top: 35%;
+      /* Ajusta a altura exata para ficar entre a frase e o arco-íris */
       left: 5%;
       width: 90%;
       display: flex;
@@ -91,7 +95,7 @@
       align-items: center;
       justify-content: center;
       gap: 3px;
-      box-shadow: 0 5px 0px rgba(0,0,0,0.2), 0 8px 12px rgba(0,0,0,0.25);
+      box-shadow: 0 5px 0px rgba(0, 0, 0, 0.2), 0 8px 12px rgba(0, 0, 0, 0.25);
       transition: transform 0.1s, box-shadow 0.1s;
       text-decoration: none;
       text-align: center;
@@ -105,7 +109,7 @@
 
     .btn-interativo:active {
       transform: translateY(4px);
-      box-shadow: 0 1px 0px rgba(0,0,0,0.2), 0 3px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 3px 5px rgba(0, 0, 0, 0.2);
     }
 
     /* Cores dos Botões ajustadas ao tema */
@@ -151,13 +155,20 @@
       padding: 25px;
       text-align: center;
       position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       animation: aparecer 0.3s ease-out;
     }
 
     @keyframes aparecer {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .fechar-modal {
@@ -198,7 +209,7 @@
       border-radius: 50px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       margin-top: 10px;
       font-size: 14px;
     }
@@ -208,6 +219,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Tag do Áudio de Fundo -->
@@ -217,7 +229,7 @@
   </audio>
 
   <div class="convite-container">
-    
+
     <!-- Botão de controle de música -->
     <button class="btn-musica" id="btn-musica" onclick="alternarMusica()">🔊</button>
 
@@ -256,8 +268,9 @@
       <button class="fechar-modal" onclick="fecharModal('modal-localizacao')">X</button>
       <h3>📍 Local do Aniversário</h3>
       <p><b>Data:</b> Domingo, 01 de Novembro às 11:00h</p>
-      <p><b>Endereço:</b> Rua L 3, N 183 - Distrito Industrial I, Manaus/Am</p>
-      <a href="https://www.google.com/maps/dir//Espa%C3%A7o+Green+Garden,+R.+L+3,+183+-+Distrito+Industrial+I,+Manaus+-+AM,+69077-825,+Brasil/@41.1322828,-8.297896,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x926c1b5ce933e6b1:0xc2e64a73ff042b03!2m2!1d-59.9599369!2d-3.1008985?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-modal-acao">Abrir no Google Maps</a>
+      <p><b>Endereço:</b> Rua L 3, N 183 - Distrito Industrial I, Manaus/Am></p></br>(ESPAÇO GREEN GARDEN)</p>
+      <a href="https://www.google.com/maps/dir//Espa%C3%A7o+Green+Garden,+R.+L+3,+183+-+Distrito+Industrial+I,+Manaus+-+AM,+69077-825,+Brasil/@41.1322828,-8.297896,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x926c1b5ce933e6b1:0xc2e64a73ff042b03!2m2!1d-59.9599369!2d-3.1008985?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D"
+        target="_blank" class="btn-modal-acao">Abrir no Google Maps</a>
     </div>
   </div>
 
@@ -267,7 +280,8 @@
       <button class="fechar-modal" onclick="fecharModal('modal-confirmar')">X</button>
       <h3>✅ Confirmar Presença</h3>
       <p>Por favor, confirme sua presença até o dia 20/10 clicando no botão abaixo:</p>
-      <a href="https://wa.me/+5592994162043?text=Olá!%20Confirmo%20minha%20presença%20no%20aniversário%20do%20Joaquim!" target="_blank" class="btn-modal-acao" style="background-color: #25D366;">Confirmar via WhatsApp</a>
+      <a href="https://wa.me/+5592994162043?text=Olá!%20Confirmo%20minha%20presença%20no%20aniversário%20do%20Joaquim!"
+        target="_blank" class="btn-modal-acao" style="background-color: #25D366;">Confirmar via WhatsApp</a>
     </div>
   </div>
 
@@ -313,7 +327,7 @@
       document.getElementById(id).style.display = 'none';
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if (event.target.classList.contains('modal')) {
         event.target.style.display = 'none';
       }
@@ -321,4 +335,5 @@
   </script>
 
 </body>
+
 </html>
